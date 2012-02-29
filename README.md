@@ -11,7 +11,7 @@ This is a template to make a ScalaCollider based OSX app.
 ###Build scsynth
 
 ```sh
-git clone --recurive git://github.com/miguel-negrao/ScalaColliderAppTemplate.git
+git clone --recursive git://github.com/miguel-negrao/ScalaColliderAppTemplate.git
 cd scsynth
 mkdir build
 cd build
