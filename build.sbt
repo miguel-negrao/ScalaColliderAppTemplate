@@ -1,8 +1,6 @@
-import AssemblyKeys._
+seq(appbundle.settings: _*)
 
 name           := "MyScalaColliderApp"
-
-appbundleName  := "MyScalaColliderApp"
 
 version        := "0.1"
 
@@ -20,8 +18,22 @@ scalacOptions ++= Seq( "-deprecation", "-unchecked" )
 
 // ---- packaging ----
 
-seq( assemblySettings: _* )
+appbundle.name := "MyScalaColliderApp"
 
-test in assembly := {}
+appbundle.javaOptions += "-Xmx1024m"
 
-seq( appbundleSettings: _* )
+appbundle.javaOptions ++= Seq( "-ea" )
+
+appbundle.systemProperties += "SC_HOME" -> "Contents/Resources/scsynth"
+
+appbundle.resources += file( "scsynth/build/Install/SuperCollider/scsynth" )
+
+appbundle.resources += file( "scsynth/build/Install/SuperCollider/plugins" )
+
+appbundle.resources += file( "scsynth/build/Install/SuperCollider/libscsynth.1.0.0.dylib" )
+
+appbundle.resources += file( "scsynth/build/Install/SuperCollider/libscsynth.1.dylib" )
+
+appbundle.resources += file( "scsynth/build/Install/SuperCollider/libscsynth.dylib" )
+
+appbundle.workingDirectory := Some( file( appbundle.BundleVar_AppPackage ))
