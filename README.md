@@ -11,9 +11,8 @@ This is a template to make a ScalaCollider based OSX app.
 ###Build scsynth
 
 ```sh
-git submodule init & git submodule update
+git clone --recurive git://github.com/miguel-negrao/ScalaColliderAppTemplate.git
 cd scsynth
-git submodule init & git submodule update
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..

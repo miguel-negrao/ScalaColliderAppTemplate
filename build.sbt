@@ -9,7 +9,7 @@ organization   := "doe.john"
 scalaVersion   := "2.9.1"
 
 libraryDependencies ++= Seq(
-   "de.sciss" %% "scalacollider" % "0.31"
+   "de.sciss" %% "scalacollider" % "0.33"
 )
 
 //retrieveManaged := true
