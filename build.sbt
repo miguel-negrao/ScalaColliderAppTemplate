@@ -47,3 +47,4 @@ appbundle.resources ++= {
 
 appbundle.workingDirectory := Some( file( appbundle.BundleVar_AppPackage ))
 
+appbundle.icon := Some( file( "icon.png" ))
