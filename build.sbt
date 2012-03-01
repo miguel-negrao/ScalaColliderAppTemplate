@@ -26,14 +26,24 @@ appbundle.javaOptions ++= Seq( "-ea" )
 
 appbundle.systemProperties += "SC_HOME" -> "Contents/Resources/scsynth"
 
-appbundle.resources += file( "scsynth/build/Install/SuperCollider/scsynth" )
-
-appbundle.resources += file( "scsynth/build/Install/SuperCollider/plugins" )
-
-appbundle.resources += file( "scsynth/build/Install/SuperCollider/libscsynth.1.0.0.dylib" )
-
-appbundle.resources += file( "scsynth/build/Install/SuperCollider/libscsynth.1.dylib" )
-
-appbundle.resources += file( "scsynth/build/Install/SuperCollider/libscsynth.dylib" )
+appbundle.resources ++= {
+   val oldBase = file( "scsynth" ) / "build" / "Install" / "SuperCollider"
+   val newBase = oldBase / "SuperCollider.app" / "Contents" / "Resources"
+   if( (oldBase / "scsynth").exists ) {
+      val scsynth = oldBase / "scsynth"
+      val plugins = oldBase / "plugins"
+      val lib1    = oldBase / "libscsynth.1.0.0.dylib"
+      val lib2    = oldBase / "libscsynth.1.dylib"
+      val lib3    = oldBase / "libscsynth.dylib"
+      Seq( scsynth, plugins, lib1, lib2, lib3 )
+   } else {
+      val scsynth = newBase / "scsynth"
+      require( scsynth.exists, "SuperCollider installation not found" )
+      val plugins = newBase / "plugins"
+      val lib1    = newBase / "SCClassLibrary"
+      Seq( scsynth, plugins, lib1 )
+   }
+}
 
 appbundle.workingDirectory := Some( file( appbundle.BundleVar_AppPackage ))
+
