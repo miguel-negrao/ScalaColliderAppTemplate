@@ -2,22 +2,35 @@
 
 ### statement
 
-This is a template to make a ScalaCollider based OSX app. 
+This is a template to make a ScalaCollider based OS X app, bundled with scsynth.
 
 - Add your own code.
 - Build scsynth.
 - run 'appbundle' in sbt to repackage the app. This will create the whole osx app bundle.
 
-###Build scsynth
+### Downloading
+
+You need to clone this project with submodules, e.g.
+
+    git clone --recursive git://github.com/miguel-negrao/ScalaColliderAppTemplate.git
+
+### Build scsynth
+
+Note: You can use the `build_scsynth.sh` shell script to do this. The steps are:
 
 ```sh
-git clone --recursive git://github.com/miguel-negrao/ScalaColliderAppTemplate.git
 cd scsynth
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 make install
 ```
+
+### Building your app
+
+    sbt appbundle
+
+The result is a double-clickable standalone application `MyScalaColliderApp.app`.
 
 ### requirements / installation
 
